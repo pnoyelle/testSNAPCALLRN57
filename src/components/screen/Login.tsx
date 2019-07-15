@@ -14,6 +14,7 @@ import {
 import { ratio, colors } from '@utils/Styles';
 import { IC_ICON } from '@utils/Icons';
 import { getString } from '@STRINGS';
+import {Snapcall, SnapcallParameter} from 'react-native-snapcall';
 
 import { statusBarHeight } from '@utils/Styles';
 import appStore from '@stores/appStore';
@@ -22,6 +23,8 @@ import TextInput from '@shared/TextInput';
 import Button from '@shared/Button';
 import StatusBar from '@shared/StatusBar';
 
+  const snapcall = new Snapcall();
+  snapcall.askForPermission("voip", "voip")
 const styles: any = StyleSheet.create({
   scrollView: {
     backgroundColor: 'white',
@@ -132,6 +135,7 @@ class Screen extends Component<any, any> {
 
   constructor(props) {
     super(props);
+
     this.state = {
       isLoggingIn: false,
       email: '',
@@ -213,6 +217,8 @@ class Screen extends Component<any, any> {
   }
 
   private onLogin = () => {
+const param = new SnapcallParameter();
+snapcall.launchCallBid("88b3d0f3a44311e78f9b0ae03a1ae33f", param);
     this.setState({ isLoggingIn: true }, async () => {
       try {
         const userData = await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.pw);

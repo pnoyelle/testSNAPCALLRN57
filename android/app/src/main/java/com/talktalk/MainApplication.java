@@ -3,6 +3,7 @@ package com.talktalk;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.snapcall.reactnative.RNSnapcallReactPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +26,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSnapcallReactPackage(),
             new LinearGradientPackage(),
             new ReactNativeLocalizationPackage()
       );
